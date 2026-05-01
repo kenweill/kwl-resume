@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'KWL_RESUME_VERSION', '1.0.0' );
+define( 'KWL_RESUME_VERSION', '1.0.1' );
 define( 'KWL_RESUME_DIR',     get_template_directory() );
 define( 'KWL_RESUME_URI',     get_template_directory_uri() );
 
