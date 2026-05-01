@@ -3,7 +3,7 @@
  * KWL Resume — functions.php
  *
  * @package kwl-resume
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
