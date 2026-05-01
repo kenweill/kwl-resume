@@ -4,6 +4,27 @@ https://github.com/kenweill/kwl-resume
 ================================================================
 
 ----------------------------------------------------------------
+Version 1.0.1 — 2026-05-02
+----------------------------------------------------------------
+BUG FIXES
+* Fixed mobile layout not stacking to single column — dynamic CSS
+  was setting grid-template-columns unconditionally, overriding
+  the mobile media query in resume.css. Now wrapped in
+  @media (min-width: 681px) so the two-column layout only applies
+  on tablet and wider screens.
+* Fixed color scheme switcher having no visible effect — individual
+  color override settings were always taking precedence over the
+  selected preset scheme. Now uses get_theme_mods() so overrides
+  only apply when explicitly saved by the user.
+
+IMPROVEMENTS
+* Expanded mobile styles with three proper breakpoints:
+  - Max 860px: narrow tablet adjustments
+  - Max 680px: full single-column stack with scaled fonts,
+    padding, avatar, skill tags, experience, projects, footer
+  - Max 360px: additional tweaks for very small screens
+
+----------------------------------------------------------------
 Version 1.0.0 — 2026-05-02
 ----------------------------------------------------------------
 Initial release.
