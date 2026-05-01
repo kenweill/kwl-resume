@@ -98,6 +98,8 @@ function kwl_resume_dynamic_css() {
     $animations = get_theme_mod( 'kwl_animations', true ) ? '' : '.kwl-page { animation: none; }';
     $print_btn  = get_theme_mod( 'kwl_print_button', true ) ? '' : '.kwl-print-btn { display: none !important; }';
 
+    // Grid layout is wrapped in min-width so it never overrides the
+    // mobile media query that collapses the layout to a single column.
     return "
 :root {
   --dark:         {$dark};
@@ -110,8 +112,10 @@ function kwl_resume_dynamic_css() {
   --font-body:    {$fp['body']};
 }
 body { background: var(--page-bg); font-family: var(--font-body); }
-.kwl-page { {$col_order} }
-{$sidebar_order}
+@media (min-width: 681px) {
+  .kwl-page { {$col_order} }
+  {$sidebar_order}
+}
 {$animations}
 {$print_btn}
 ";

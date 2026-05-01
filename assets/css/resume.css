@@ -443,13 +443,77 @@ body {
 /* ════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════ */
+
+/* Tablet — narrow two-column */
+@media (max-width: 860px) and (min-width: 681px) {
+  .kwl-page { max-width: 100%; }
+  .kwl-main { padding: 36px 28px; }
+  .kwl-main-name { font-size: 2.2rem; }
+}
+
+/* Mobile — single column stack */
 @media (max-width: 680px) {
   body { padding: 0; }
-  .kwl-page { grid-template-columns: 1fr; border-radius: 0; }
-  .kwl-sidebar { padding: 36px 24px; }
-  .kwl-main { padding: 32px 24px; }
-  .kwl-main-name { font-size: 2.2rem; }
-  .kwl-exp-header { flex-direction: column; gap: 4px; }
-  .kwl-exp-date { text-align: left; }
-  .kwl-print-btn { bottom: 16px; right: 16px; }
+
+  /* Page */
+  .kwl-page {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Sidebar */
+  .kwl-sidebar {
+    padding: 32px 20px;
+    gap: 28px;
+  }
+  .kwl-avatar { width: 84px; height: 84px; font-size: 1.8rem; }
+  .kwl-sidebar-name { font-size: 1.25rem; }
+  .kwl-skills-cloud { gap: 6px; }
+  .kwl-skill-tag { font-size: 0.68rem; padding: 3px 9px; }
+  .kwl-cert-list li { font-size: 0.72rem; }
+
+  /* Main */
+  .kwl-main { padding: 28px 20px; gap: 28px; }
+  .kwl-main-name { font-size: 1.9rem; letter-spacing: -0.3px; }
+  .kwl-main-title { font-size: 0.68rem; }
+
+  /* Summary */
+  .kwl-summary-text { font-size: 0.84rem; padding-left: 14px; }
+
+  /* Section label */
+  .kwl-section-label { font-size: 0.62rem; margin-bottom: 16px; }
+
+  /* Experience */
+  .kwl-exp-item { margin-bottom: 22px; }
+  .kwl-exp-header { flex-direction: column; gap: 2px; }
+  .kwl-exp-role { font-size: 0.96rem; }
+  .kwl-exp-date { text-align: left; white-space: normal; font-size: 0.66rem; }
+  .kwl-exp-company { font-size: 0.74rem; margin-bottom: 8px; }
+  .kwl-exp-bullets li { font-size: 0.78rem; }
+
+  /* Projects */
+  .kwl-proj-item { padding: 12px 14px; }
+  .kwl-proj-header { flex-wrap: wrap; }
+  .kwl-proj-item p { font-size: 0.76rem; }
+
+  /* Custom sections */
+  .kwl-cs-header { flex-direction: column; gap: 2px; }
+  .kwl-cs-date { white-space: normal; font-size: 0.66rem; }
+  .kwl-cs-heading { font-size: 0.96rem; }
+  .kwl-cs-desc { font-size: 0.78rem; }
+
+  /* Footer */
+  .kwl-resume-footer { padding-top: 22px; gap: 10px; }
+  .kwl-footer-linkedin { padding: 7px 16px; font-size: 0.72rem; }
+
+  /* Print button */
+  .kwl-print-btn { width: 42px; height: 42px; font-size: 1.1rem; bottom: 16px; right: 16px; }
+}
+
+/* Very small screens (320px) */
+@media (max-width: 360px) {
+  .kwl-main-name { font-size: 1.6rem; }
+  .kwl-main { padding: 22px 16px; }
+  .kwl-sidebar { padding: 28px 16px; }
 }
