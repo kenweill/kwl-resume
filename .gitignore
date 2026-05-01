@@ -1,0 +1,28 @@
+# KWL Resume — .gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if ever used for build tools)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build output
+dist/
+*.zip
+
+# WordPress
+wp-config.php
+
+# Misc
+*.bak
+*.log
+.env

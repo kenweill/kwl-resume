@@ -1,0 +1,42 @@
+================================================================
+KWL Resume — Changelog
+https://github.com/kenweill/kwl-resume
+================================================================
+
+----------------------------------------------------------------
+Version 1.0.0 — 2026-05-02
+----------------------------------------------------------------
+Initial release.
+
+NEW FEATURES
+* 8 preset color schemes: Growth & Trust (default), Midnight,
+  Crimson, Forest, Slate, Amber, Rose, Indigo
+* 6 Google Font pairings selectable from the Customizer
+* Individual color overrides for advanced customization
+* Sidebar position toggle (left / right) with adjustable width
+* Section visibility toggles — show/hide without losing data
+* Page load animation (togglable)
+* Print / Save as PDF floating button (togglable)
+* Tabbed admin settings page (Appearance → Resume Content):
+  - Profile tab: name, title, summary, photo, initials
+  - Contact tab: location, email, LinkedIn, GitHub, website,
+    unlimited custom links
+  - Experience tab: sortable job entries with bullet points
+  - Skills tab: comma-separated tags with live preview
+  - Education tab: sortable institution/degree entries
+  - Certifications tab: name, issuer, date
+  - Projects tab: generic project entries with type field
+    (open source, client work, personal, etc.)
+  - Custom Sections tab: create unlimited custom sections
+    with any title and entry structure
+  - Section Settings tab: rename section headings, enable/
+    disable per section
+* Drag-and-drop reordering for Experience, Education,
+  Certifications, and Projects entries
+* Responsive layout — stacks cleanly on mobile
+* Print stylesheet for clean PDF output
+* Translation ready (text domain: kwl-resume)
+* Pre-populated with sample resume data (easily replaced)
+* Proper screenshot.png placeholder (replace with your own)
+
+================================================================

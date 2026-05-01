@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KWL Resume — Documentation</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:    #0A1929;
+    --accent:  #0D9488;
+    --accent2: #14B8A6;
+    --gold:    #EAB308;
+    --bg:      #F0F4F8;
+    --card:    #ffffff;
+    --text:    #1E2D3D;
+    --muted:   #64748B;
+    --border:  #E2E8F0;
+  }
+
+  html { font-size: 15px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    background: var(--dark);
+    color: #fff;
+    padding: 56px 40px 48px;
+    text-align: center;
+  }
+  .doc-header .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .doc-header h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .doc-header h1 span { color: var(--accent); }
+  .doc-header p {
+    font-size: 1rem;
+    color: #94A3B8;
+    max-width: 560px;
+    margin: 0 auto 28px;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    color: #64748B;
+  }
+  .header-meta a { color: var(--accent); text-decoration: none; }
+  .header-meta a:hover { color: var(--accent2); }
+
+  /* ── LAYOUT ── */
+  .doc-wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .doc-nav {
+    position: sticky;
+    top: 24px;
+  }
+  .doc-nav ul {
+    list-style: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .doc-nav li a {
+    display: block;
+    padding: 9px 18px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .doc-nav li a:hover {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: #F0FFFE;
+  }
+  .doc-nav li.nav-group > a {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: #F8FAFC;
+    border-left-color: transparent;
+    cursor: default;
+    padding-top: 14px;
+  }
+  .doc-nav li + li { border-top: 1px solid var(--border); }
+
+  /* ── MAIN CONTENT ── */
+  .doc-content { min-width: 0; }
+
+  .doc-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    scroll-margin-top: 24px;
+  }
+
+  .doc-section h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .doc-section h2 .icon { font-size: 1.2rem; }
+
+  .doc-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 28px 0 10px;
+  }
+
+  .doc-section p { margin-bottom: 14px; color: #334155; font-size: 0.88rem; }
+  .doc-section p:last-child { margin-bottom: 0; }
+
+  .doc-section ul, .doc-section ol {
+    margin: 0 0 14px 20px;
+    font-size: 0.88rem;
+    color: #334155;
+  }
+  .doc-section li { margin-bottom: 6px; }
+
+  /* ── STEP LIST ── */
+  .steps { list-style: none; margin: 0 0 16px; padding: 0; }
+  .steps li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 0.88rem;
+    color: #334155;
+  }
+  .steps li .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  /* ── CODE ── */
+  code {
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.82rem;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    color: #0D9488;
+  }
+  pre {
+    background: #0A1929;
+    color: #A8D8C8;
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-size: 0.82rem;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    overflow-x: auto;
+    margin: 16px 0;
+    line-height: 1.7;
+  }
+
+  /* ── SCHEME GRID ── */
+  .scheme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .scheme-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.78rem;
+  }
+  .scheme-preview {
+    height: 44px;
+    display: flex;
+  }
+  .scheme-preview span { flex: 1; }
+  .scheme-info { padding: 10px 12px; }
+  .scheme-info strong { display: block; font-size: 0.82rem; color: var(--dark); margin-bottom: 2px; }
+  .scheme-info span { color: var(--muted); font-size: 0.72rem; }
+
+  /* ── FONT TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin: 16px 0;
+  }
+  th {
+    background: #F8FAFC;
+    font-weight: 600;
+    color: var(--dark);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #334155;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #F8FFFE; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 7px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.85rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .callout p { margin: 0; }
+  .callout-info { background: #EFF6FF; border: 1px solid #BFDBFE; color: #1E40AF; }
+  .callout-tip  { background: #F0FFFE; border: 1px solid #99F6E4; color: #065F46; }
+  .callout-warn { background: #FFFBEB; border: 1px solid #FDE68A; color: #92400E; }
+
+  /* ── FILE TREE ── */
+  .file-tree {
+    white-space: pre;
+    background: #0A1929;
+    color: #A8D8C8;
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-size: 0.82rem;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    line-height: 2;
+    margin: 16px 0;
+  }
+  .file-tree .dir { color: #60A5FA; }
+  .file-tree .file { color: #94D3AC; }
+  .file-tree .comment { color: #4A6880; }
+
+  /* ── ADMIN TABS ── */
+  .tab-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .tab-card {
+    background: #F8FAFC;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px 16px;
+  }
+  .tab-card strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .tab-card p { font-size: 0.78rem; color: var(--muted); margin: 0; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--dark);
+    color: #64748B;
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.78rem;
+  }
+  .doc-footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .doc-wrap { grid-template-columns: 1fr; }
+    .doc-nav { display: none; }
+    .doc-section { padding: 24px 20px; }
+    .doc-header { padding: 36px 20px 32px; }
+    .doc-header h1 { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="doc-header">
+  <div class="badge">WordPress Theme</div>
+  <h1>KWL <span>Resume</span></h1>
+  <p>A fully customizable single-page resume/CV WordPress theme with 8 color schemes, live Customizer preview, and a full admin content editor.</p>
+  <div class="header-meta">
+    <span>Version 1.0.0</span>
+    <span>·</span>
+    <a href="https://github.com/kenweill/kwl-resume" target="_blank">github.com/kenweill/kwl-resume</a>
+    <span>·</span>
+    <span>Author: <a href="https://github.com/kenweill" target="_blank">Ken Weill</a></span>
+    <span>·</span>
+    <span>License: GPL-2.0+</span>
+  </div>
+</header>
+
+<div class="doc-wrap">
+
+  <!-- ── SIDEBAR NAV ── -->
+  <nav class="doc-nav">
+    <ul>
+      <li class="nav-group"><a>Getting Started</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#quick-start">Quick Start</a></li>
+      <li class="nav-group"><a>Content</a></li>
+      <li><a href="#admin-settings">Admin Settings</a></li>
+      <li><a href="#custom-sections">Custom Sections</a></li>
+      <li class="nav-group"><a>Design</a></li>
+      <li><a href="#customizer">Customizer</a></li>
+      <li><a href="#color-schemes">Color Schemes</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#layout">Layout</a></li>
+      <li class="nav-group"><a>Advanced</a></li>
+      <li><a href="#screenshot">Screenshot</a></li>
+      <li><a href="#github">Publishing to GitHub</a></li>
+      <li><a href="#file-structure">File Structure</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="doc-content">
+
+    <!-- Requirements -->
+    <section class="doc-section" id="requirements">
+      <h2><span class="icon">⚙️</span> Requirements</h2>
+      <table>
+        <tr><th>Requirement</th><th>Minimum</th><th>Recommended</th></tr>
+        <tr><td>WordPress</td><td>5.9</td><td>6.4+</td></tr>
+        <tr><td>PHP</td><td>7.4</td><td>8.1+</td></tr>
+        <tr><td>MySQL</td><td>5.7</td><td>8.0+</td></tr>
+      </table>
+      <p>No plugins are required. The theme is fully self-contained.</p>
+    </section>
+
+    <!-- Installation -->
+    <section class="doc-section" id="installation">
+      <h2><span class="icon">📦</span> Installation</h2>
+
+      <h3>Method 1 — Upload via WordPress Admin (recommended)</h3>
+      <ol class="steps">
+        <li><span class="step-num">1</span>Download <code>kwl-resume.zip</code> from GitHub Releases.</li>
+        <li><span class="step-num">2</span>In your WordPress dashboard go to <strong>Appearance → Themes → Add New → Upload Theme</strong>.</li>
+        <li><span class="step-num">3</span>Choose the zip file and click <strong>Install Now</strong>.</li>
+        <li><span class="step-num">4</span>Click <strong>Activate</strong>.</li>
+      </ol>
+
+      <h3>Method 2 — FTP / cPanel File Manager</h3>
+      <ol class="steps">
+        <li><span class="step-num">1</span>Extract <code>kwl-resume.zip</code> on your computer.</li>
+        <li><span class="step-num">2</span>Upload the <code>kwl-resume</code> folder to <code>wp-content/themes/</code> on your server.</li>
+        <li><span class="step-num">3</span>Activate via <strong>Appearance → Themes</strong>.</li>
+      </ol>
+
+      <h3>Method 3 — Git clone</h3>
+      <pre>cd wp-content/themes/
+git clone https://github.com/kenweill/kwl-resume.git</pre>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="doc-section" id="quick-start">
+      <h2><span class="icon">🚀</span> Quick Start</h2>
+
+      <div class="callout callout-warn">
+        <span class="callout-icon">⚠️</span>
+        <p><strong>Set a static front page first.</strong> Go to <strong>Settings → Reading</strong>, set "Your homepage displays" to <em>A static page</em>, and assign any page as the homepage. This activates <code>front-page.php</code> so the resume template loads correctly.</p>
+      </div>
+
+      <ol class="steps">
+        <li><span class="step-num">1</span>Install and activate the theme.</li>
+        <li><span class="step-num">2</span>Go to <strong>Settings → Reading</strong> and set a static homepage.</li>
+        <li><span class="step-num">3</span>Go to <strong>Appearance → Resume Content</strong> and replace the sample data with your own.</li>
+        <li><span class="step-num">4</span>Go to <strong>Appearance → Customize → KWL Resume</strong> to pick a color scheme, font, and layout.</li>
+        <li><span class="step-num">5</span>Click <strong>Publish</strong> in the Customizer and your resume is live.</li>
+      </ol>
+    </section>
+
+    <!-- Admin Settings -->
+    <section class="doc-section" id="admin-settings">
+      <h2><span class="icon">🗂</span> Admin Settings (Resume Content)</h2>
+      <p>Found at <strong>Appearance → Resume Content</strong>. All resume content is managed here across 9 tabs.</p>
+
+      <div class="tab-list">
+        <div class="tab-card">
+          <strong>👤 Profile</strong>
+          <p>Full name, professional title, summary paragraph, profile photo URL, avatar initials, last updated date, open-to-work toggle.</p>
+        </div>
+        <div class="tab-card">
+          <strong>📬 Contact</strong>
+          <p>Location, remote label, email, LinkedIn, GitHub, personal website, plus unlimited custom links with icon/emoji, label, and URL.</p>
+        </div>
+        <div class="tab-card">
+          <strong>💼 Experience</strong>
+          <p>Job entries with role, company, date range, and bullet points. Drag the ☰ handle to reorder entries.</p>
+        </div>
+        <div class="tab-card">
+          <strong>🛠 Skills</strong>
+          <p>Comma-separated skill tags. A live dark preview updates as you type so you can see exactly how the tags will look.</p>
+        </div>
+        <div class="tab-card">
+          <strong>🎓 Education</strong>
+          <p>Institution name, degree or diploma, date range. Supports multiple entries — drag to reorder.</p>
+        </div>
+        <div class="tab-card">
+          <strong>📜 Certifications</strong>
+          <p>Certification name, issuer/platform, and date. Drag to reorder. Supports unlimited entries.</p>
+        </div>
+        <div class="tab-card">
+          <strong>🗂 Projects</strong>
+          <p>Project name, type (open source, client work, personal, etc.), description, URL, and link label. Not limited to open source.</p>
+        </div>
+        <div class="tab-card">
+          <strong>➕ Custom Sections</strong>
+          <p>Create entirely new sections with any title. Each section can have unlimited entries with heading, subheading, date, description, and bullet points.</p>
+        </div>
+        <div class="tab-card">
+          <strong>⚙️ Section Settings</strong>
+          <p>Enable or disable each standard section and rename its heading label. Disabled sections are hidden but their data is preserved.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <p>The theme ships pre-populated with sample resume data. Simply overwrite each field with your own information and click <strong>Save Changes</strong>.</p>
+      </div>
+    </section>
+
+    <!-- Custom Sections -->
+    <section class="doc-section" id="custom-sections">
+      <h2><span class="icon">➕</span> Custom Sections</h2>
+      <p>Found under <strong>Appearance → Resume Content → Custom Sections</strong>. Use these for anything not covered by the standard sections.</p>
+
+      <p><strong>Examples of custom sections people add:</strong></p>
+      <ul>
+        <li>Awards &amp; Recognition</li>
+        <li>Volunteer Work</li>
+        <li>Languages</li>
+        <li>Publications</li>
+        <li>Speaking Engagements</li>
+        <li>Conferences Attended</li>
+        <li>Hobbies &amp; Interests</li>
+        <li>References</li>
+      </ul>
+
+      <p>Each custom section can have unlimited entries. Each entry supports: <strong>Heading</strong>, <strong>Subheading</strong>, <strong>Date</strong>, <strong>Description</strong>, and <strong>Bullet points</strong> — use as many or as few fields as you need.</p>
+
+      <p>Custom sections can be toggled on/off individually using the <strong>Enabled</strong> checkbox next to each section title.</p>
+    </section>
+
+    <!-- Customizer -->
+    <section class="doc-section" id="customizer">
+      <h2><span class="icon">🎨</span> WordPress Customizer</h2>
+      <p>Found at <strong>Appearance → Customize → KWL Resume</strong>. All design and layout controls are here with a live preview on the right.</p>
+
+      <table>
+        <tr><th>Panel</th><th>Controls</th></tr>
+        <tr>
+          <td><strong>Color Scheme</strong></td>
+          <td>8 preset schemes + individual color overrides for sidebar bg, accent, highlight, and page background.</td>
+        </tr>
+        <tr>
+          <td><strong>Typography</strong></td>
+          <td>6 Google Font pairings — changes both the display (headings) and body font simultaneously.</td>
+        </tr>
+        <tr>
+          <td><strong>Layout</strong></td>
+          <td>Sidebar position (left/right), sidebar width slider (200–380px).</td>
+        </tr>
+        <tr>
+          <td><strong>Section Visibility</strong></td>
+          <td>Checkboxes to show/hide each section. Content is preserved when hidden.</td>
+        </tr>
+        <tr>
+          <td><strong>Extras</strong></td>
+          <td>Page load animation toggle, print/PDF button toggle, open-to-work message toggle.</td>
+        </tr>
+      </table>
+
+      <div class="callout callout-info">
+        <span class="callout-icon">ℹ️</span>
+        <p><strong>Important:</strong> The color scheme preset is always the source of truth. Individual color overrides only apply after you explicitly save them. If switching schemes has no visible effect, check that individual color pickers are cleared (blank them out and click Publish).</p>
+      </div>
+    </section>
+
+    <!-- Color Schemes -->
+    <section class="doc-section" id="color-schemes">
+      <h2><span class="icon">🎨</span> Color Schemes</h2>
+      <p>8 schemes are included. Switch between them in <strong>Customize → KWL Resume → Color Scheme</strong>.</p>
+
+      <div class="scheme-grid">
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#0A1929"></span>
+            <span style="background:#0D9488"></span>
+            <span style="background:#EAB308"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Growth &amp; Trust</strong>
+            <span>Default — dark navy + teal</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#0D1B2A"></span>
+            <span style="background:#F59E0B"></span>
+            <span style="background:#FBBF24"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Midnight</strong>
+            <span>Deep navy + gold</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#1A0A0A"></span>
+            <span style="background:#DC2626"></span>
+            <span style="background:#FBBF24"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Crimson</strong>
+            <span>Charcoal + red</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#0A1A0D"></span>
+            <span style="background:#16A34A"></span>
+            <span style="background:#BEF264"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Forest</strong>
+            <span>Dark green + lime</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#1E293B"></span>
+            <span style="background:#8B5CF6"></span>
+            <span style="background:#C4B5FD"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Slate</strong>
+            <span>Cool gray + violet</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#1C1207"></span>
+            <span style="background:#D97706"></span>
+            <span style="background:#FCD34D"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Amber</strong>
+            <span>Espresso + amber</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#1A0812"></span>
+            <span style="background:#E11D48"></span>
+            <span style="background:#FDA4AF"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Rose</strong>
+            <span>Near-black + rose</span>
+          </div>
+        </div>
+        <div class="scheme-card">
+          <div class="scheme-preview">
+            <span style="background:#0F0A2E"></span>
+            <span style="background:#06B6D4"></span>
+            <span style="background:#A5F3FC"></span>
+          </div>
+          <div class="scheme-info">
+            <strong>Indigo</strong>
+            <span>Dark indigo + cyan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="doc-section" id="typography">
+      <h2><span class="icon">🔤</span> Typography</h2>
+      <p>Select a font pairing in <strong>Customize → KWL Resume → Typography</strong>. Both fonts are loaded from Google Fonts.</p>
+      <table>
+        <tr><th>Pairing</th><th>Display (headings)</th><th>Body</th></tr>
+        <tr><td><strong>Roboto Slab + Roboto</strong> <em style="color:#94A3B8">(default)</em></td><td>Roboto Slab</td><td>Roboto</td></tr>
+        <tr><td>Playfair Display + Source Sans 3</td><td>Playfair Display</td><td>Source Sans 3</td></tr>
+        <tr><td>Merriweather + Open Sans</td><td>Merriweather</td><td>Open Sans</td></tr>
+        <tr><td>DM Serif Display + DM Sans</td><td>DM Serif Display</td><td>DM Sans</td></tr>
+        <tr><td>Libre Baskerville + Lato</td><td>Libre Baskerville</td><td>Lato</td></tr>
+        <tr><td>Josefin Slab + Josefin Sans</td><td>Josefin Slab</td><td>Josefin Sans</td></tr>
+      </table>
+    </section>
+
+    <!-- Layout -->
+    <section class="doc-section" id="layout">
+      <h2><span class="icon">📐</span> Layout</h2>
+      <p>Found in <strong>Customize → KWL Resume → Layout</strong>.</p>
+      <ul>
+        <li><strong>Sidebar Position</strong> — toggle the sidebar between left and right.</li>
+        <li><strong>Sidebar Width</strong> — slider from 200px to 380px. Default is 280px.</li>
+      </ul>
+      <p>The layout stacks to a single column on screens narrower than 680px (mobile-friendly).</p>
+    </section>
+
+    <!-- Screenshot -->
+    <section class="doc-section" id="screenshot">
+      <h2><span class="icon">📸</span> Theme Screenshot</h2>
+      <p>WordPress displays <code>screenshot.png</code> in the theme browser (<strong>Appearance → Themes</strong>). The recommended size is <strong>1200 × 900 pixels</strong>, PNG format.</p>
+
+      <p>To capture a proper screenshot:</p>
+      <ol class="steps">
+        <li><span class="step-num">1</span>Open your resume on the live site.</li>
+        <li><span class="step-num">2</span>Open Chrome DevTools (<code>F12</code>), enable the device toolbar, and set width to <strong>1200px</strong>.</li>
+        <li><span class="step-num">3</span>Right-click → <strong>Capture full size screenshot</strong>.</li>
+        <li><span class="step-num">4</span>Crop the image to <strong>1200 × 900px</strong> (top portion works best).</li>
+        <li><span class="step-num">5</span>Save as <code>screenshot.png</code> and replace the placeholder file in the theme folder.</li>
+      </ol>
+    </section>
+
+    <!-- GitHub -->
+    <section class="doc-section" id="github">
+      <h2><span class="icon">🐙</span> Publishing to GitHub</h2>
+
+      <h3>First-time setup</h3>
+      <pre>cd kwl-resume
+git init
+git add .
+git commit -m "Initial release v1.0.0"
+git remote add origin https://github.com/kenweill/kwl-resume.git
+git branch -M main
+git push -u origin main</pre>
+
+      <h3>Creating a release</h3>
+      <ol class="steps">
+        <li><span class="step-num">1</span>On GitHub go to your repository → <strong>Releases → Draft a new release</strong>.</li>
+        <li><span class="step-num">2</span>Set the tag to <code>v1.0.0</code> and the title to <code>KWL Resume v1.0.0</code>.</li>
+        <li><span class="step-num">3</span>Copy the relevant section from <code>changelog.txt</code> into the release notes.</li>
+        <li><span class="step-num">4</span>Attach the <code>kwl-resume.zip</code> file as a release asset.</li>
+        <li><span class="step-num">5</span>Click <strong>Publish release</strong>.</li>
+      </ol>
+
+      <h3>Updating the theme (future versions)</h3>
+      <pre>git add .
+git commit -m "Version 1.1.0 — describe what changed"
+git tag v1.1.0
+git push origin main --tags</pre>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <p>Update the <code>Version</code> field in <code>style.css</code>, the <code>KWL_RESUME_VERSION</code> constant in <code>functions.php</code>, and add a new entry to <code>changelog.txt</code> with each release.</p>
+      </div>
+    </section>
+
+    <!-- File Structure -->
+    <section class="doc-section" id="file-structure">
+      <h2><span class="icon">📁</span> File Structure</h2>
+      <div class="file-tree">
+<span class="dir">kwl-resume/</span>
+├── <span class="file">style.css</span>              <span class="comment">← Theme header &amp; metadata</span>
+├── <span class="file">functions.php</span>          <span class="comment">← Bootstrap, enqueue, dynamic CSS</span>
+├── <span class="file">index.php</span>              <span class="comment">← WordPress fallback template</span>
+├── <span class="file">front-page.php</span>         <span class="comment">← Main resume output template</span>
+├── <span class="file">screenshot.png</span>         <span class="comment">← Theme browser preview (1200×900)</span>
+├── <span class="file">README.md</span>              <span class="comment">← GitHub readme</span>
+├── <span class="file">changelog.txt</span>          <span class="comment">← Version history</span>
+├── <span class="file">documentation.html</span>     <span class="comment">← This file</span>
+├── <span class="file">.gitignore</span>
+│
+├── <span class="dir">inc/</span>
+│   ├── <span class="file">color-schemes.php</span>  <span class="comment">← 8 color schemes + 6 font pairs</span>
+│   ├── <span class="file">template-functions.php</span> <span class="comment">← Data getters &amp; render helpers</span>
+│   ├── <span class="file">customizer.php</span>     <span class="comment">← WordPress Customizer panels</span>
+│   └── <span class="file">admin-settings.php</span> <span class="comment">← Tabbed admin settings page</span>
+│
+└── <span class="dir">assets/</span>
+    ├── <span class="dir">css/</span>
+    │   ├── <span class="file">resume.css</span>         <span class="comment">← Front-end styles</span>
+    │   └── <span class="file">admin.css</span>          <span class="comment">← Admin page styles</span>
+    └── <span class="dir">js/</span>
+        └── <span class="file">admin.js</span>           <span class="comment">← Repeater, sortable, skills preview</span>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="doc-section" id="faq">
+      <h2><span class="icon">❓</span> FAQ</h2>
+
+      <h3>The resume isn't showing — I see a blank page or blog posts.</h3>
+      <p>Go to <strong>Settings → Reading</strong> and set "Your homepage displays" to <em>A static page</em>. Create a blank page if needed and assign it as the homepage. This activates the <code>front-page.php</code> template.</p>
+
+      <h3>Switching color schemes has no effect.</h3>
+      <p>The individual color override pickers in the Customizer may be overriding the scheme. Go to <strong>Customize → KWL Resume → Color Scheme</strong>, clear all individual color fields, click <strong>Publish</strong>, then select your scheme again.</p>
+
+      <h3>Where do I upload my profile photo?</h3>
+      <p>Upload it via <strong>Media → Add New</strong> in your WordPress dashboard. Once uploaded, copy the file URL and paste it into the <strong>Profile Photo URL</strong> field in <strong>Appearance → Resume Content → Profile</strong>.</p>
+
+      <h3>How do I print or save as PDF?</h3>
+      <p>Click the floating 🖨 button on your resume page, or press <code>Ctrl+P</code> / <code>Cmd+P</code> in your browser. In the print dialog, choose <em>Save as PDF</em> as the destination. The theme includes a dedicated print stylesheet for clean output.</p>
+
+      <h3>Can I add more than one custom section?</h3>
+      <p>Yes — there is no limit. In <strong>Appearance → Resume Content → Custom Sections</strong>, click <strong>Add Custom Section</strong> as many times as you need.</p>
+
+      <h3>How do I hide a section without deleting its content?</h3>
+      <p>Two ways: (1) Go to <strong>Appearance → Resume Content → Section Settings</strong> and uncheck the section. (2) Go to <strong>Customize → KWL Resume → Section Visibility</strong> and uncheck it there. Both preserve all content.</p>
+
+      <h3>How do I update the theme?</h3>
+      <p>Download the new zip from the GitHub releases page and go to <strong>Appearance → Themes → Add New → Upload Theme</strong>. Upload the new zip and click <strong>Replace current with uploaded</strong>. Your resume data stored in the WordPress database is not affected by theme updates.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="doc-footer">
+  <p>KWL Resume Theme — <a href="https://github.com/kenweill/kwl-resume">github.com/kenweill/kwl-resume</a> — by <a href="https://github.com/kenweill">Ken Weill</a> — GPL-2.0+</p>
+</footer>
+
+</body>
+</html>

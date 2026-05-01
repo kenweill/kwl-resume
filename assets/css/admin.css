@@ -1,0 +1,325 @@
+/* ============================================================
+   KWL Resume Theme — Admin Stylesheet
+   ============================================================ */
+
+/* ── Page Header ── */
+.kwl-resume-admin { max-width: 1100px; }
+
+.kwl-admin-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.4rem !important;
+    margin-bottom: 20px !important;
+}
+
+.kwl-logo {
+    background: #0A1929;
+    color: #0D9488;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+}
+
+/* ── Tabs ── */
+.kwl-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0;
+}
+
+.kwl-tab {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #555;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    background: #f9f9f9;
+    margin-bottom: -2px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.kwl-tab:hover { background: #fff; color: #0D9488; }
+
+.kwl-tab--active {
+    background: #fff;
+    color: #0D9488;
+    border-color: #ddd;
+    font-weight: 600;
+    border-bottom-color: #fff;
+}
+
+/* ── Section Cards ── */
+.kwl-section-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.kwl-section-card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0A1929;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0D9488;
+    display: inline-block;
+}
+
+/* ── Field Rows ── */
+.kwl-field-row {
+    margin-bottom: 18px;
+}
+
+.kwl-field-row label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.kwl-field-row input[type="text"],
+.kwl-field-row input[type="url"],
+.kwl-field-row input[type="email"],
+.kwl-field-row textarea {
+    border-radius: 4px;
+    border-color: #d1d5db;
+    padding: 7px 10px;
+    font-size: 0.85rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.kwl-field-row input:focus,
+.kwl-field-row textarea:focus {
+    border-color: #0D9488;
+    box-shadow: 0 0 0 2px rgba(13,148,136,0.15);
+    outline: none;
+}
+
+.kwl-field-row .description {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.kwl-field-row--inline {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.kwl-field-row--inline > div { flex: 1; min-width: 200px; }
+
+.kwl-field-row--3col {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.kwl-field-row--3col > div { flex: 1; min-width: 160px; }
+
+/* ── Repeater Items ── */
+.kwl-repeater-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.kwl-repeater-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 18px 20px;
+    position: relative;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.kwl-repeater-item.kwl-sortable-dragging {
+    opacity: 0.5;
+    background: #eef2ff;
+    border-color: #0D9488;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.kwl-repeater-handle {
+    cursor: grab;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    padding: 2px 4px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    user-select: none;
+}
+.kwl-repeater-handle:active { cursor: grabbing; }
+
+.kwl-repeater-body { flex: 1; }
+.kwl-repeater-body .kwl-field-row:last-child { margin-bottom: 0; }
+
+.kwl-remove-item {
+    position: absolute !important;
+    top: 12px;
+    right: 14px;
+    font-size: 0.72rem !important;
+    color: #ef4444 !important;
+    text-decoration: none;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+}
+.kwl-remove-item:hover {
+    background: #fee2e2;
+    color: #dc2626 !important;
+}
+
+/* ── Skills Preview ── */
+.kwl-skills-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 14px;
+    background: #0A1929;
+    border-radius: 6px;
+    min-height: 48px;
+}
+
+.kwl-skill-preview-tag {
+    background: #0F2440;
+    border: 1px solid rgba(13,152,136,0.3);
+    color: #B8CDD8;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 2px;
+}
+
+/* ── Custom Sections ── */
+.kwl-custom-sections-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.kwl-custom-section {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px 22px;
+    background: #f9fafb;
+}
+
+.kwl-custom-section-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.kwl-remove-section {
+    font-size: 0.75rem !important;
+    color: #ef4444 !important;
+    cursor: pointer;
+    background: none;
+    border: none;
+    white-space: nowrap;
+    padding: 4px 8px;
+    border-radius: 3px;
+    transition: background 0.15s;
+    font-weight: 500;
+}
+.kwl-remove-section:hover { background: #fee2e2; }
+
+.kwl-custom-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.kwl-cs-entry { background: #fff; }
+
+.kwl-add-cs-entry {
+    font-size: 0.8rem !important;
+    margin-top: 8px;
+}
+
+/* ── Sections Table ── */
+.kwl-sections-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+    background: #f3f4f6;
+    padding: 10px 14px;
+}
+.kwl-sections-table td {
+    padding: 10px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+}
+.kwl-sections-table input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0D9488;
+}
+
+/* ── Form Footer ── */
+.kwl-form-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 8px;
+}
+
+.kwl-form-footer .button-primary {
+    background: #0D9488 !important;
+    border-color: #0b8278 !important;
+    padding: 8px 24px !important;
+    height: auto !important;
+    font-size: 0.9rem !important;
+}
+.kwl-form-footer .button-primary:hover {
+    background: #0b8278 !important;
+}
+
+/* ── Add Repeater Buttons ── */
+.kwl-add-repeater, #kwl-add-custom-link, #kwl-add-custom-section {
+    font-size: 0.82rem !important;
+    color: #0D9488 !important;
+    border-color: #0D9488 !important;
+    background: #f0fffe !important;
+    transition: background 0.15s !important;
+}
+.kwl-add-repeater:hover, #kwl-add-custom-link:hover, #kwl-add-custom-section:hover {
+    background: #ccfbf1 !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 782px) {
+    .kwl-tabs { gap: 2px; }
+    .kwl-tab { padding: 6px 10px; font-size: 0.76rem; }
+    .kwl-section-card { padding: 18px; }
+    .kwl-field-row--inline,
+    .kwl-field-row--3col { flex-direction: column; }
+}
