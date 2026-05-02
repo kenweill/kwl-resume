@@ -24,8 +24,9 @@ A fully customizable single-page resume/CV WordPress theme with 8 color schemes,
 - **Responsive** — stacks gracefully on mobile across all screen sizes
 - **Print stylesheet** — clean output when printing or saving as PDF
 - **Translation ready** — fully i18n with `kwl-resume` text domain
-<img width="1920" height="2715" alt="screenshot" src="https://github.com/user-attachments/assets/b64b9c0c-6dec-4a5e-9281-b3090af09ebe" />
 ---
+<img width="1920" height="2715" alt="screenshot" src="https://github.com/user-attachments/assets/b64b9c0c-6dec-4a5e-9281-b3090af09ebe" />
+
 
 ## Installation
 
