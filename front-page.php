@@ -232,8 +232,11 @@ $show_print = get_theme_mod( 'kwl_print_button', true );
         <?php /* ── Custom Sections ── */ ?>
         <?php $custom_sections = kwl_resume_get_custom_sections();
         foreach ( $custom_sections as $cs ) :
-            if ( empty( $cs['enabled'] ) || $cs['enabled'] === '0' ) continue;
-            if ( empty( $cs['entries'] ) ) continue; ?>
+            // Only skip if explicitly disabled — default to visible
+            $cs_enabled = isset( $cs['enabled'] ) ? $cs['enabled'] : '1';
+            if ( $cs_enabled === '0' ) continue;
+            // Skip if no title and no entries — truly empty section
+            if ( empty( $cs['title'] ) && empty( $cs['entries'] ) ) continue; ?>
         <section class="kwl-section">
             <div class="kwl-section-label"><?php echo esc_html( $cs['title'] ); ?></div>
             <?php foreach ( $cs['entries'] as $entry ) : ?>
