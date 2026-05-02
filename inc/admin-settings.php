@@ -156,7 +156,7 @@ function kwl_resume_save_settings() {
                     }
                     $custom[] = [
                         'title'   => sanitize_text_field( $title ),
-                        'enabled' => isset( $_POST['kwl_cs_enabled'][ $si ] ) ? '1' : '0',
+                        'enabled' => sanitize_text_field( $_POST['kwl_cs_enabled'][ $si ] ?? '0' ),
                         'entries' => $entries,
                     ];
                 }
@@ -684,7 +684,9 @@ function kwl_resume_tab_custom() {
                         </div>
                         <div style="align-self:flex-end;padding-bottom:4px">
                             <label>
-                                <input type="checkbox" name="kwl_cs_enabled[<?php echo esc_attr( $si ); ?>]" value="1" <?php checked( $section['enabled'], '1' ); ?>>
+                                <input type="hidden" name="kwl_cs_enabled[]" value="<?php echo esc_attr( $section['enabled'] ); ?>">
+                                <input type="checkbox" <?php checked( $section['enabled'], '1' ); ?>
+                                       onchange="this.previousElementSibling.value = this.checked ? '1' : '0';">
                                 <?php esc_html_e( 'Enabled', 'kwl-resume' ); ?>
                             </label>
                         </div>

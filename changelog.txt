@@ -4,6 +4,17 @@ https://github.com/kenweill/kwl-resume
 ================================================================
 
 ----------------------------------------------------------------
+Version 1.0.2 — 2026-05-02
+----------------------------------------------------------------
+BUG FIXES
+* Fixed custom sections not appearing on the resume — the enabled
+  checkbox used an indexed key (kwl_cs_enabled[n]) which browsers
+  don't submit when unchecked, causing PHP to always default to
+  disabled. Fixed using a hidden field + checkbox pattern so the
+  enabled state always submits correctly regardless of checked
+  state.
+
+----------------------------------------------------------------
 Version 1.0.1 — 2026-05-02
 ----------------------------------------------------------------
 BUG FIXES
