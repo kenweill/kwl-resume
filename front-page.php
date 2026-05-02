@@ -201,41 +201,11 @@ $show_print = get_theme_mod( 'kwl_print_button', true );
         </section>
         <?php endif; ?>
 
-        <?php /* ── Projects ── */ ?>
-        <?php if ( kwl_resume_section_enabled( 'projects' ) ) :
-              $projects = kwl_resume_get_projects(); ?>
-        <section class="kwl-section">
-            <div class="kwl-section-label"><?php echo esc_html( $sections['projects']['label'] ); ?></div>
-            <div class="kwl-proj-list">
-                <?php foreach ( $projects as $proj ) : ?>
-                <div class="kwl-proj-item">
-                    <div class="kwl-proj-header">
-                        <strong><?php echo esc_html( $proj['name'] ); ?></strong>
-                        <?php if ( ! empty( $proj['type'] ) ) : ?>
-                        <span class="kwl-proj-type"><?php echo esc_html( $proj['type'] ); ?></span>
-                        <?php endif; ?>
-                    </div>
-                    <p><?php echo wp_kses_post( $proj['description'] ); ?></p>
-                    <?php if ( ! empty( $proj['url'] ) ) : ?>
-                    <div class="kwl-proj-link">
-                        <a href="<?php echo esc_url( $proj['url'] ); ?>" target="_blank" rel="noopener">
-                            <?php echo esc_html( $proj['url_label'] ?: $proj['url'] ); ?> →
-                        </a>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-        <?php endif; ?>
-
         <?php /* ── Custom Sections ── */ ?>
         <?php $custom_sections = kwl_resume_get_custom_sections();
-        foreach ( $custom_sections as $cs ) :
-            // Only skip if explicitly disabled — default to visible
-            $cs_enabled = isset( $cs['enabled'] ) ? $cs['enabled'] : '1';
+        foreach ( $custom_sections as $ci => $cs ) :
+            $cs_enabled = isset( $cs['enabled'] ) ? (string) $cs['enabled'] : '1';
             if ( $cs_enabled === '0' ) continue;
-            // Skip if no title and no entries — truly empty section
             if ( empty( $cs['title'] ) && empty( $cs['entries'] ) ) continue; ?>
         <section class="kwl-section">
             <div class="kwl-section-label"><?php echo esc_html( $cs['title'] ); ?></div>
@@ -266,6 +236,34 @@ $show_print = get_theme_mod( 'kwl_print_button', true );
             <?php endforeach; ?>
         </section>
         <?php endforeach; ?>
+
+        <?php /* ── Projects ── */ ?>
+        <?php if ( kwl_resume_section_enabled( 'projects' ) ) :
+              $projects = kwl_resume_get_projects(); ?>
+        <section class="kwl-section">
+            <div class="kwl-section-label"><?php echo esc_html( $sections['projects']['label'] ); ?></div>
+            <div class="kwl-proj-list">
+                <?php foreach ( $projects as $proj ) : ?>
+                <div class="kwl-proj-item">
+                    <div class="kwl-proj-header">
+                        <strong><?php echo esc_html( $proj['name'] ); ?></strong>
+                        <?php if ( ! empty( $proj['type'] ) ) : ?>
+                        <span class="kwl-proj-type"><?php echo esc_html( $proj['type'] ); ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <p><?php echo wp_kses_post( $proj['description'] ); ?></p>
+                    <?php if ( ! empty( $proj['url'] ) ) : ?>
+                    <div class="kwl-proj-link">
+                        <a href="<?php echo esc_url( $proj['url'] ); ?>" target="_blank" rel="noopener">
+                            <?php echo esc_html( $proj['url_label'] ?: $proj['url'] ); ?> →
+                        </a>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+        <?php endif; ?>
 
         <?php /* ── Footer ── */ ?>
         <?php if ( kwl_resume_section_enabled( 'footer' ) ) :

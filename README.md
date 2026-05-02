@@ -62,6 +62,7 @@ Go to **Appearance → Resume Content** to edit all resume data across these tab
 | 🗂 Projects | Name, type, description, URL — any kind of project |
 | ➕ Custom Sections | Create entirely new sections with any title and entries |
 | ⚙️ Section Settings | Enable/disable sections and rename their headings |
+| 🔍 Debug | Troubleshoot custom section data |
 
 ### Appearance & Layout
 
@@ -141,6 +142,11 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 
 ### 1.0.2
 - Fixed custom sections not appearing on the resume
+- Fixed custom sections not showing in Section Settings tab
+- Fixed enabled/disabled state not saving correctly for custom sections
+- Moved custom sections to appear after Experience and before Projects
+- Fixed section label hierarchy — labels are now larger than their entries
+- Added Debug tab in admin for troubleshooting
 
 ### 1.0.1
 - Fixed mobile layout not stacking to single column

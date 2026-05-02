@@ -4,15 +4,35 @@ https://github.com/kenweill/kwl-resume
 ================================================================
 
 ----------------------------------------------------------------
-Version 1.0.2 — 2026-05-02
+Version 1.0.2 — 2026-05-03
 ----------------------------------------------------------------
 BUG FIXES
-* Fixed custom sections not appearing on the resume — the enabled
-  checkbox used an indexed key (kwl_cs_enabled[n]) which browsers
-  don't submit when unchecked, causing PHP to always default to
-  disabled. Fixed using a hidden field + checkbox pattern so the
-  enabled state always submits correctly regardless of checked
-  state.
+* Fixed custom sections not appearing on the resume — rendering
+  logic was too strict in checking the enabled state, causing
+  sections to be silently skipped even when enabled.
+* Fixed custom sections not appearing in Section Settings tab —
+  only built-in sections were listed, making it impossible to
+  toggle custom sections from that tab.
+* Fixed enabled/disabled state not saving correctly for custom
+  sections — checkbox used an indexed key that browsers don't
+  submit when unchecked, causing PHP to always default to
+  disabled. Fixed using a hidden field + checkbox pattern.
+
+IMPROVEMENTS
+* Moved custom sections to render after Experience and before
+  Projects — better visual flow since custom sections share the
+  same layout as experience entries.
+* Fixed section label hierarchy — section labels (Professional
+  Experience, etc.) are now larger than their entries (job
+  titles, etc.) restoring correct visual hierarchy.
+* Added Debug tab in admin settings for troubleshooting custom
+  section data.
+
+FILES CHANGED
+* front-page.php
+* inc/admin-settings.php
+* assets/js/admin.js
+* assets/css/resume.css
 
 ----------------------------------------------------------------
 Version 1.0.1 — 2026-05-02
@@ -34,6 +54,10 @@ IMPROVEMENTS
   - Max 680px: full single-column stack with scaled fonts,
     padding, avatar, skill tags, experience, projects, footer
   - Max 360px: additional tweaks for very small screens
+
+FILES CHANGED
+* functions.php
+* assets/css/resume.css
 
 ----------------------------------------------------------------
 Version 1.0.0 — 2026-05-02

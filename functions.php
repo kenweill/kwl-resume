@@ -118,6 +118,14 @@ body { background: var(--page-bg); font-family: var(--font-body); }
 }
 {$animations}
 {$print_btn}
+/* Section label hierarchy — defined here to bypass CSS file caching */
+.kwl-section-label { font-size: 0.92rem !important; letter-spacing: 0.1em !important; }
+.kwl-s-label       { font-size: 0.82rem !important; letter-spacing: 0.1em !important; }
+.kwl-exp-role      { font-size: 0.95rem !important; }
+.kwl-cs-heading    { font-size: 0.95rem !important; }
+@media (max-width: 680px) {
+  .kwl-section-label { font-size: 0.82rem !important; }
+}
 ";
 }
 
