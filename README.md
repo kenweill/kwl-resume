@@ -21,7 +21,7 @@ A fully customizable single-page resume/CV WordPress theme with 8 color schemes,
 - **Projects section** — generic, not limited to open source; each project has a Type field
 - **Print / Save as PDF** button — fixed floating button, togglable
 - **Page load animation** — togglable fade-in
-- **Responsive** — stacks gracefully on mobile
+- **Responsive** — stacks gracefully on mobile across all screen sizes
 - **Print stylesheet** — clean output when printing or saving as PDF
 - **Translation ready** — fully i18n with `kwl-resume` text domain
 
@@ -107,15 +107,18 @@ Go to **Appearance → Customize → KWL Resume** to control:
 
 ```
 kwl-resume/
-├── style.css                  # Theme header
-├── functions.php              # Theme bootstrap, enqueue, dynamic CSS
-├── index.php                  # Fallback template
-├── front-page.php             # Main resume template
-├── screenshot.png             # Theme screenshot (1200×900)
-├── README.md
+├── style.css                  # Theme header & metadata
+├── functions.php              # Bootstrap, enqueue, dynamic CSS
+├── index.php                  # WordPress fallback template
+├── front-page.php             # Main resume output template
+├── screenshot.png             # Theme browser preview (1200×900)
+├── README.md                  # This file
+├── changelog.txt              # Version history
+├── documentation.html         # Full usage documentation
+├── .gitignore
 ├── inc/
 │   ├── color-schemes.php      # 8 color schemes + 6 font pairs
-│   ├── template-functions.php # Data getters + render helpers
+│   ├── template-functions.php # Data getters & render helpers
 │   ├── customizer.php         # WordPress Customizer panels
 │   └── admin-settings.php     # Tabbed admin settings page
 └── assets/
@@ -136,8 +139,15 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 
 ## Changelog
 
+### 1.0.1
+- Fixed mobile layout not stacking to single column
+- Fixed color scheme switcher having no visible effect
+- Improved mobile styles with proper breakpoints for tablet, mobile, and small screens
+
 ### 1.0.0
 - Initial release
+
+See [changelog.txt](changelog.txt) for full details.
 
 ---
 
