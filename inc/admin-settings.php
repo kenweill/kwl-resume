@@ -165,6 +165,7 @@ function kwl_resume_save_settings() {
             break;
 
         case 'sections':
+            // Save built-in section settings
             $sections_cfg = kwl_resume_get_sections_config();
             foreach ( array_keys( $sections_cfg ) as $key ) {
                 $sections_cfg[ $key ]['enabled'] = isset( $_POST[ 'kwl_section_' . $key ] ) ? '1' : '0';
@@ -173,6 +174,15 @@ function kwl_resume_save_settings() {
                 }
             }
             update_option( 'kwl_resume_sections', $sections_cfg );
+
+            // Save custom section enabled states from Section Settings tab
+            $custom_sections = kwl_resume_get_custom_sections();
+            if ( ! empty( $custom_sections ) ) {
+                foreach ( $custom_sections as $i => $cs ) {
+                    $custom_sections[ $i ]['enabled'] = isset( $_POST[ 'kwl_cs_section_' . $i ] ) ? '1' : '0';
+                }
+                update_option( 'kwl_resume_custom_sections', $custom_sections );
+            }
             break;
     }
 
@@ -739,7 +749,8 @@ function kwl_resume_tab_custom() {
 
 /* ── TAB: Section Settings ── */
 function kwl_resume_tab_sections() {
-    $cfg = kwl_resume_get_sections_config();
+    $cfg            = kwl_resume_get_sections_config();
+    $custom_sections = kwl_resume_get_custom_sections();
     ?>
     <div class="kwl-section-card">
         <h2><?php esc_html_e( 'Section Settings', 'kwl-resume' ); ?></h2>
@@ -768,8 +779,41 @@ function kwl_resume_tab_sections() {
                     </td>
                 </tr>
                 <?php endforeach; ?>
+
+                <?php if ( ! empty( $custom_sections ) ) : ?>
+                <tr>
+                    <td colspan="3" style="background:#f8fafc;padding:8px 14px;">
+                        <em style="font-size:0.78rem;color:#64748B;">
+                            <?php esc_html_e( 'Custom Sections', 'kwl-resume' ); ?>
+                        </em>
+                    </td>
+                </tr>
+                <?php foreach ( $custom_sections as $i => $cs ) : ?>
+                <tr>
+                    <td>
+                        <strong><?php echo esc_html( $cs['title'] ?: __( '(Untitled)', 'kwl-resume' ) ); ?></strong>
+                        <br><em style="font-size:0.72rem;color:#94A3B8;"><?php esc_html_e( 'Custom Section', 'kwl-resume' ); ?></em>
+                    </td>
+                    <td>
+                        <em style="font-size:0.78rem;color:#94A3B8;">
+                            <?php esc_html_e( 'Edit title in Custom Sections tab', 'kwl-resume' ); ?>
+                        </em>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="kwl_cs_section_<?php echo esc_attr( $i ); ?>"
+                               value="1" <?php checked( $cs['enabled'], '1' ); ?>>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+
             </tbody>
         </table>
+        <?php if ( empty( $custom_sections ) ) : ?>
+        <p class="description" style="margin-top:14px">
+            <?php esc_html_e( 'No custom sections yet. Add them in the Custom Sections tab.', 'kwl-resume' ); ?>
+        </p>
+        <?php endif; ?>
     </div>
     <?php
 }
