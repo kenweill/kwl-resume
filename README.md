@@ -28,6 +28,7 @@ A fully customizable single-page resume/CV WordPress theme with 8 color schemes,
 ---
 
 ## Installation
+<img width="1920" height="2715" alt="screenshot" src="https://github.com/user-attachments/assets/b64b9c0c-6dec-4a5e-9281-b3090af09ebe" />
 
 ### From GitHub
 
