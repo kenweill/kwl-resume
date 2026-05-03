@@ -4,6 +4,25 @@ https://github.com/kenweill/kwl-resume
 ================================================================
 
 ----------------------------------------------------------------
+Version 1.0.3 — 2026-05-03
+----------------------------------------------------------------
+IMPROVEMENTS
+* Renamed Debug tab to System Info — better reflects its purpose
+  as a troubleshooting and support tool rather than a dev tool.
+* Added environment info to System Info tab: theme version,
+  WordPress version, PHP version, site URL, multisite status,
+  WP debug mode, and active plugin count — standard information
+  needed when reporting issues.
+* Improved System Info tab layout with clearer section headings,
+  common fixes reference, and better instructions for including
+  the data in support reports.
+
+FILES CHANGED
+* inc/admin-settings.php
+* style.css
+* functions.php
+
+----------------------------------------------------------------
 Version 1.0.2 — 2026-05-03
 ----------------------------------------------------------------
 BUG FIXES

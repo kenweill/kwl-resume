@@ -140,6 +140,11 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 
 ## Changelog
 
+### 1.0.3
+- Renamed Debug tab to System Info
+- Added environment info: theme version, WordPress version, PHP version, site URL, multisite, WP debug mode, active plugin count
+- Improved layout and instructions in System Info tab
+
 ### 1.0.2
 - Fixed custom sections not appearing on the resume
 - Fixed custom sections not showing in Section Settings tab

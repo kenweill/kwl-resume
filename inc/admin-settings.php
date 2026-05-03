@@ -203,7 +203,7 @@ function kwl_resume_admin_page() {
         'projects'       => __( '🗂 Projects',         'kwl-resume' ),
         'custom'         => __( '➕ Custom Sections',  'kwl-resume' ),
         'sections'       => __( '⚙️ Section Settings', 'kwl-resume' ),
-        'debug'          => __( '🔍 Debug',            'kwl-resume' ),
+        'debug'          => __( '🔍 System Info',       'kwl-resume' ),
     ];
     ?>
     <div class="wrap kwl-resume-admin">
@@ -821,45 +821,87 @@ function kwl_resume_tab_sections() {
 }
 
 
-/* ── TAB: Debug ── */
+/* ── TAB: System Info ── */
 function kwl_resume_tab_debug() {
-    $custom = get_option( 'kwl_resume_custom_sections', [] );
+    $custom       = get_option( 'kwl_resume_custom_sections', [] );
+    $theme        = wp_get_theme();
+    $php_version  = phpversion();
+    $wp_version   = get_bloginfo( 'version' );
+    $theme_version= $theme->get( 'Version' );
+    $site_url     = get_site_url();
+    $is_multisite = is_multisite() ? __( 'Yes', 'kwl-resume' ) : __( 'No', 'kwl-resume' );
+    $debug_mode   = defined( 'WP_DEBUG' ) && WP_DEBUG ? __( 'Enabled', 'kwl-resume' ) : __( 'Disabled', 'kwl-resume' );
+    $active_plugins = count( get_option( 'active_plugins', [] ) );
     ?>
     <div class="kwl-section-card">
-        <h2><?php esc_html_e( 'Debug — Custom Sections Data', 'kwl-resume' ); ?></h2>
-        <p class="description" style="margin-bottom:16px">
-            This shows exactly what is stored in the database for your custom sections.
-            If it shows <code>[]</code> or is empty, the data is not saving.
-            Share this output if you need support.
+        <h2><?php esc_html_e( 'System Info', 'kwl-resume' ); ?></h2>
+        <p class="description" style="margin-bottom:20px">
+            <?php esc_html_e( 'This page helps you troubleshoot issues with your resume theme. If you encounter a problem and need support, please include the information below in your report.', 'kwl-resume' ); ?>
         </p>
 
-        <h3 style="margin-bottom:10px">Raw stored data:</h3>
-        <pre style="background:#0A1929;color:#A8D8C8;padding:20px;border-radius:6px;overflow-x:auto;font-size:0.8rem;line-height:1.7"><?php
-            echo esc_html( print_r( $custom, true ) );
-        ?></pre>
+        <h3 style="margin-bottom:12px"><?php esc_html_e( 'Environment', 'kwl-resume' ); ?></h3>
+        <table class="widefat" style="margin-bottom:28px">
+            <tbody>
+                <tr>
+                    <td style="width:220px;font-weight:600"><?php esc_html_e( 'Theme Name', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $theme->get( 'Name' ) ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'Theme Version', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $theme_version ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'WordPress Version', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $wp_version ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'PHP Version', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $php_version ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'Site URL', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $site_url ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'Multisite', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $is_multisite ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'WP Debug Mode', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $debug_mode ); ?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:600"><?php esc_html_e( 'Active Plugins', 'kwl-resume' ); ?></td>
+                    <td><?php echo esc_html( $active_plugins ); ?></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <h3 style="margin:20px 0 10px">Rendered check:</h3>
+        <h3 style="margin-bottom:12px"><?php esc_html_e( 'Custom Sections Data', 'kwl-resume' ); ?></h3>
+        <p class="description" style="margin-bottom:12px">
+            <?php esc_html_e( 'Shows the current state of your custom sections as stored in the database. Include this in any support request related to custom sections not displaying.', 'kwl-resume' ); ?>
+        </p>
         <table class="widefat" style="margin-bottom:16px">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Enabled</th>
-                    <th>Entries count</th>
-                    <th>Would show on resume?</th>
+                    <th><?php esc_html_e( 'Title', 'kwl-resume' ); ?></th>
+                    <th><?php esc_html_e( 'Enabled', 'kwl-resume' ); ?></th>
+                    <th><?php esc_html_e( 'Entries', 'kwl-resume' ); ?></th>
+                    <th><?php esc_html_e( 'Shows on Resume?', 'kwl-resume' ); ?></th>
                 </tr>
             </thead>
             <tbody>
             <?php if ( empty( $custom ) ) : ?>
-                <tr><td colspan="4"><em>No custom sections saved yet.</em></td></tr>
+                <tr><td colspan="4"><em><?php esc_html_e( 'No custom sections saved yet.', 'kwl-resume' ); ?></em></td></tr>
             <?php else : ?>
                 <?php foreach ( $custom as $i => $cs ) :
-                    $enabled   = isset( $cs['enabled'] ) ? $cs['enabled'] : '(not set — defaults to visible)';
-                    $entries   = count( $cs['entries'] ?? [] );
-                    $cs_en     = isset( $cs['enabled'] ) ? $cs['enabled'] : '1';
-                    $would_show = ( $cs_en !== '0' && ( ! empty( $cs['title'] ) || $entries > 0 ) ) ? '✅ Yes' : '❌ No';
+                    $enabled    = isset( $cs['enabled'] ) ? $cs['enabled'] : __( '(not set — defaults to visible)', 'kwl-resume' );
+                    $entries    = count( $cs['entries'] ?? [] );
+                    $cs_en      = isset( $cs['enabled'] ) ? $cs['enabled'] : '1';
+                    $would_show = ( $cs_en !== '0' && ( ! empty( $cs['title'] ) || $entries > 0 ) ) ? '✅ ' . __( 'Yes', 'kwl-resume' ) : '❌ ' . __( 'No', 'kwl-resume' );
                 ?>
                 <tr>
-                    <td><?php echo esc_html( $cs['title'] ?? '(no title)' ); ?></td>
+                    <td><?php echo esc_html( $cs['title'] ?? __( '(no title)', 'kwl-resume' ) ); ?></td>
                     <td><?php echo esc_html( $enabled ); ?></td>
                     <td><?php echo esc_html( $entries ); ?></td>
                     <td><?php echo esc_html( $would_show ); ?></td>
@@ -869,11 +911,23 @@ function kwl_resume_tab_debug() {
             </tbody>
         </table>
 
-        <p class="description">
-            <strong>If entries count is 0:</strong> Go to the Custom Sections tab, add an entry, and Save Changes.<br>
-            <strong>If enabled shows 0:</strong> Go to Section Settings tab, check the box, and Save Changes.<br>
-            <strong>If this table is empty:</strong> The save is not working — try saving from the Custom Sections tab again.
+        <h3 style="margin-bottom:12px"><?php esc_html_e( 'Raw Database Value', 'kwl-resume' ); ?></h3>
+        <p class="description" style="margin-bottom:8px">
+            <?php esc_html_e( 'Copy and include this in your support report if custom sections are not saving or displaying correctly.', 'kwl-resume' ); ?>
         </p>
+        <pre style="background:#0A1929;color:#A8D8C8;padding:20px;border-radius:6px;overflow-x:auto;font-size:0.8rem;line-height:1.7;margin-bottom:20px"><?php
+            echo esc_html( print_r( $custom, true ) );
+        ?></pre>
+
+        <div class="callout" style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:14px 18px;">
+            <p style="font-size:0.83rem;color:#1E40AF;margin:0">
+                <strong><?php esc_html_e( 'Common fixes:', 'kwl-resume' ); ?></strong><br>
+                <?php esc_html_e( 'Entries = 0 → Go to Custom Sections tab, add an entry, and Save Changes.', 'kwl-resume' ); ?><br>
+                <?php esc_html_e( 'Enabled = 0 → Go to Section Settings tab, check the section, and Save Changes.', 'kwl-resume' ); ?><br>
+                <?php esc_html_e( 'Table empty → Try saving again from the Custom Sections tab.', 'kwl-resume' ); ?><br>
+                <?php esc_html_e( 'Section not updating → Clear your caching plugin cache.', 'kwl-resume' ); ?>
+            </p>
+        </div>
     </div>
     <?php
 }
