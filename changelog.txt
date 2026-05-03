@@ -6,42 +6,20 @@ https://github.com/kenweill/kwl-resume
 ----------------------------------------------------------------
 Version 1.1.0 — 2026-05-04
 ----------------------------------------------------------------
-BUG FIXES
-* Fixed incomplete backups — export was using get_option() which
-  only returns data that has been explicitly saved to the database.
-  Sections the user never manually saved (e.g. Certifications,
-  Skills, Education) were silently omitted from the backup file.
-  Export now uses the getter functions (kwl_resume_get_*) which
-  always return either saved data or the built-in defaults,
-  guaranteeing a complete backup every time.
-* Fixed theme_mods export also missing defaults — appearance
-  settings (color scheme, font pair, sidebar position, etc.) that
-  were never changed from their defaults were not included in the
-  backup. Export now falls back to known defaults for any mod key
-  not yet written to the database.
-
-FILES CHANGED
-* inc/backup-restore.php
-
-----------------------------------------------------------------
-Version 1.0.4 — 2026-05-04
-----------------------------------------------------------------
 NEW FEATURES
 * Added Backup & Restore tab (💾) to the admin settings page.
-  - Export: downloads a signed .json file containing all resume
-    content (profile, contact, experience, skills, education,
+  - Export: downloads a .json file containing all resume content
+    (profile, contact, experience, skills, education,
     certifications, projects, custom sections, section settings)
     and all Customizer settings (color scheme, font pair, sidebar
-    position/width, animations, print button).
+    position/width, animations, print button). Always exports a
+    complete snapshot — includes sections still on defaults, not
+    just ones explicitly saved.
   - Import: upload a previously exported .json file to restore
     all data — works across domains and WordPress installs.
-  - SHA-256 integrity hash embedded in every export file to
-    detect corruption or accidental edits before restoring.
   - Friendly error messages for missing file, upload errors,
-    oversized files, invalid format, and hash mismatch.
+    oversized files, and invalid format.
   - Built-in migration guide with step-by-step instructions.
-  - Save Changes footer is hidden on this tab since the tab
-    manages its own form submissions.
 
 FILES CHANGED
 * inc/backup-restore.php  (new file)
