@@ -3,12 +3,12 @@
  * KWL Resume — functions.php
  *
  * @package kwl-resume
- * @version 1.0.4
+ * @version 1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'KWL_RESUME_VERSION', '1.0.4' );
+define( 'KWL_RESUME_VERSION', '1.1.0' );
 define( 'KWL_RESUME_DIR',     get_template_directory() );
 define( 'KWL_RESUME_URI',     get_template_directory_uri() );
 

@@ -226,6 +226,11 @@ function kwl_resume_admin_page() {
             <?php endforeach; ?>
         </nav>
 
+        <?php if ( $tab === 'backup' ) : ?>
+            <div class="kwl-tab-content">
+                <?php kwl_resume_tab_backup(); ?>
+            </div>
+        <?php else : ?>
         <form method="post" action="" class="kwl-form">
             <?php wp_nonce_field( 'kwl_resume_admin', 'kwl_resume_nonce' ); ?>
             <input type="hidden" name="kwl_tab" value="<?php echo esc_attr( $tab ); ?>">
@@ -243,12 +248,11 @@ function kwl_resume_admin_page() {
                     case 'custom':         kwl_resume_tab_custom();         break;
                     case 'sections':       kwl_resume_tab_sections();       break;
                     case 'debug':          kwl_resume_tab_debug();          break;
-                    case 'backup':         kwl_resume_tab_backup();         break;
                 }
                 ?>
             </div>
 
-            <div class="kwl-form-footer" <?php echo $tab === 'backup' ? 'style="display:none"' : ''; ?>>
+            <div class="kwl-form-footer">
                 <button type="submit" name="kwl_resume_save" class="button button-primary button-large">
                     <?php esc_html_e( 'Save Changes', 'kwl-resume' ); ?>
                 </button>
@@ -257,6 +261,7 @@ function kwl_resume_admin_page() {
                 </a>
             </div>
         </form>
+        <?php endif; ?>
     </div>
     <?php
 }

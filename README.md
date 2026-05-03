@@ -142,6 +142,10 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 
 ## Changelog
 
+### 1.1.0
+- Fixed incomplete backups — sections never manually saved (e.g. Certifications, Skills, Education) were missing from export because it relied on `get_option()` which returns nothing for unsaved defaults. Export now uses the getter functions to guarantee a complete backup every time.
+- Fixed theme_mods export skipping default appearance settings
+
 ### 1.0.4
 - Added Backup & Restore tab — export all resume content and Customizer settings to a signed .json file; restore on any WordPress installation
 - SHA-256 integrity hash in every backup file to detect corruption before restoring
