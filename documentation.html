@@ -393,7 +393,7 @@
 
       <h3>Method 1 — Upload via WordPress Admin (recommended)</h3>
       <ol class="steps">
-        <li><span class="step-num">1</span>Download <code>kwl-resume.zip</code> from GitHub Releases.</li>
+        <li><span class="step-num">1</span>Go to the <a href="https://github.com/kenweill/kwl-resume/releases/latest" target="_blank" rel="noopener">latest release on GitHub</a> and download the zip file from the Assets section.</li>
         <li><span class="step-num">2</span>In your WordPress dashboard go to <strong>Appearance → Themes → Add New → Upload Theme</strong>.</li>
         <li><span class="step-num">3</span>Choose the zip file and click <strong>Install Now</strong>.</li>
         <li><span class="step-num">4</span>Click <strong>Activate</strong>.</li>
@@ -401,7 +401,7 @@
 
       <h3>Method 2 — FTP / cPanel File Manager</h3>
       <ol class="steps">
-        <li><span class="step-num">1</span>Extract <code>kwl-resume.zip</code> on your computer.</li>
+        <li><span class="step-num">1</span>Download the zip file from the <a href="https://github.com/kenweill/kwl-resume/releases/latest" target="_blank" rel="noopener">latest release on GitHub</a> and extract it on your computer.</li>
         <li><span class="step-num">2</span>Upload the <code>kwl-resume</code> folder to <code>wp-content/themes/</code> on your server.</li>
         <li><span class="step-num">3</span>Activate via <strong>Appearance → Themes</strong>.</li>
       </ol>
@@ -692,7 +692,7 @@ git push -u origin main</pre>
         <li><span class="step-num">1</span>On GitHub go to your repository → <strong>Releases → Draft a new release</strong>.</li>
         <li><span class="step-num">2</span>Set the tag to <code>v1.0.0</code> and the title to <code>KWL Resume v1.0.0</code>.</li>
         <li><span class="step-num">3</span>Copy the relevant section from <code>changelog.txt</code> into the release notes.</li>
-        <li><span class="step-num">4</span>Attach the <code>kwl-resume.zip</code> file as a release asset.</li>
+        <li><span class="step-num">4</span>Attach your versioned zip file (e.g. <code>KWL.Resume.v1.0.3.zip</code>) as a release asset.</li>
         <li><span class="step-num">5</span>Click <strong>Publish release</strong>.</li>
       </ol>
 
@@ -761,7 +761,7 @@ git push origin main --tags</pre>
       <p>Two ways: (1) Go to <strong>Appearance → Resume Content → Section Settings</strong> and uncheck the section. (2) Go to <strong>Customize → KWL Resume → Section Visibility</strong> and uncheck it there. Both preserve all content.</p>
 
       <h3>How do I update the theme?</h3>
-      <p>Download the new zip from the GitHub releases page and go to <strong>Appearance → Themes → Add New → Upload Theme</strong>. Upload the new zip and click <strong>Replace current with uploaded</strong>. Your resume data stored in the WordPress database is not affected by theme updates.</p>
+      <p>Go to the <a href="https://github.com/kenweill/kwl-resume/releases/latest" target="_blank" rel="noopener">latest release on GitHub</a> and download the zip file. Since WordPress won't overwrite an active theme, first switch to another theme, delete KWL Resume, then go to <strong>Appearance → Themes → Add New → Upload Theme</strong>, upload the new zip, and activate. Your resume data stored in the WordPress database is not affected.</p>
     </section>
 
   </main>
