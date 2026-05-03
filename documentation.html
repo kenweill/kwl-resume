@@ -432,7 +432,7 @@ git clone https://github.com/kenweill/kwl-resume.git</pre>
     <!-- Admin Settings -->
     <section class="doc-section" id="admin-settings">
       <h2><span class="icon">🗂</span> Admin Settings (Resume Content)</h2>
-      <p>Found at <strong>Appearance → Resume Content</strong>. All resume content is managed here across 9 tabs.</p>
+      <p>Found at <strong>Appearance → Resume Content</strong>. All resume content is managed here across 11 tabs.</p>
 
       <div class="tab-list">
         <div class="tab-card">
@@ -470,6 +470,14 @@ git clone https://github.com/kenweill/kwl-resume.git</pre>
         <div class="tab-card">
           <strong>⚙️ Section Settings</strong>
           <p>Enable or disable each standard section and rename its heading label. Disabled sections are hidden but their data is preserved.</p>
+        </div>
+        <div class="tab-card">
+          <strong>🔍 System Info</strong>
+          <p>Environment details (theme version, WP version, PHP version, site URL, active plugins) and custom sections raw data — useful when reporting issues.</p>
+        </div>
+        <div class="tab-card">
+          <strong>💾 Backup &amp; Restore</strong>
+          <p>Export all resume content and Customizer settings to a signed .json file. Restore from any previously exported backup — works across domains and WordPress installs. Includes a step-by-step migration guide.</p>
         </div>
       </div>
 
@@ -692,7 +700,7 @@ git push -u origin main</pre>
         <li><span class="step-num">1</span>On GitHub go to your repository → <strong>Releases → Draft a new release</strong>.</li>
         <li><span class="step-num">2</span>Set the tag to <code>v1.0.0</code> and the title to <code>KWL Resume v1.0.0</code>.</li>
         <li><span class="step-num">3</span>Copy the relevant section from <code>changelog.txt</code> into the release notes.</li>
-        <li><span class="step-num">4</span>Attach your versioned zip file (e.g. <code>KWL.Resume.v1.0.3.zip</code>) as a release asset.</li>
+        <li><span class="step-num">4</span>Attach your versioned zip file (e.g. <code>KWL.Resume.v1.0.4.zip</code>) as a release asset.</li>
         <li><span class="step-num">5</span>Click <strong>Publish release</strong>.</li>
       </ol>
 
@@ -727,7 +735,8 @@ git push origin main --tags</pre>
 │   ├── <span class="file">color-schemes.php</span>  <span class="comment">← 8 color schemes + 6 font pairs</span>
 │   ├── <span class="file">template-functions.php</span> <span class="comment">← Data getters &amp; render helpers</span>
 │   ├── <span class="file">customizer.php</span>     <span class="comment">← WordPress Customizer panels</span>
-│   └── <span class="file">admin-settings.php</span> <span class="comment">← Tabbed admin settings page</span>
+│   ├── <span class="file">admin-settings.php</span> <span class="comment">← Tabbed admin settings page</span>
+│   └── <span class="file">backup-restore.php</span> <span class="comment">← Export / import backup feature</span>
 │
 └── <span class="dir">assets/</span>
     ├── <span class="dir">css/</span>

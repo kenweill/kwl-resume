@@ -204,6 +204,7 @@ function kwl_resume_admin_page() {
         'custom'         => __( '➕ Custom Sections',  'kwl-resume' ),
         'sections'       => __( '⚙️ Section Settings', 'kwl-resume' ),
         'debug'          => __( '🔍 System Info',       'kwl-resume' ),
+        'backup'         => __( '💾 Backup & Restore',  'kwl-resume' ),
     ];
     ?>
     <div class="wrap kwl-resume-admin">
@@ -242,11 +243,12 @@ function kwl_resume_admin_page() {
                     case 'custom':         kwl_resume_tab_custom();         break;
                     case 'sections':       kwl_resume_tab_sections();       break;
                     case 'debug':          kwl_resume_tab_debug();          break;
+                    case 'backup':         kwl_resume_tab_backup();         break;
                 }
                 ?>
             </div>
 
-            <div class="kwl-form-footer">
+            <div class="kwl-form-footer" <?php echo $tab === 'backup' ? 'style="display:none"' : ''; ?>>
                 <button type="submit" name="kwl_resume_save" class="button button-primary button-large">
                     <?php esc_html_e( 'Save Changes', 'kwl-resume' ); ?>
                 </button>

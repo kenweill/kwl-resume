@@ -3,12 +3,12 @@
  * KWL Resume — functions.php
  *
  * @package kwl-resume
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'KWL_RESUME_VERSION', '1.0.3' );
+define( 'KWL_RESUME_VERSION', '1.0.4' );
 define( 'KWL_RESUME_DIR',     get_template_directory() );
 define( 'KWL_RESUME_URI',     get_template_directory_uri() );
 
@@ -17,6 +17,7 @@ require_once KWL_RESUME_DIR . '/inc/color-schemes.php';
 require_once KWL_RESUME_DIR . '/inc/template-functions.php';
 require_once KWL_RESUME_DIR . '/inc/customizer.php';
 require_once KWL_RESUME_DIR . '/inc/admin-settings.php';
+require_once KWL_RESUME_DIR . '/inc/backup-restore.php';
 
 /* ── Theme Setup ── */
 function kwl_resume_setup() {

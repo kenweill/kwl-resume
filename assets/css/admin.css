@@ -323,3 +323,10 @@
     .kwl-field-row--inline,
     .kwl-field-row--3col { flex-direction: column; }
 }
+
+/* ── Backup & Restore Tab ── */
+.kwl-file-input {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.87rem;
+}

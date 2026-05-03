@@ -62,7 +62,8 @@ Go to **Appearance → Resume Content** to edit all resume data across these tab
 | 🗂 Projects | Name, type, description, URL — any kind of project |
 | ➕ Custom Sections | Create entirely new sections with any title and entries |
 | ⚙️ Section Settings | Enable/disable sections and rename their headings |
-| 🔍 Debug | Troubleshoot custom section data |
+| 🔍 System Info | Troubleshoot custom section data and environment |
+| 💾 Backup & Restore | Export all data to .json; restore on any WP install |
 
 ### Appearance & Layout
 
@@ -121,7 +122,8 @@ kwl-resume/
 │   ├── color-schemes.php      # 8 color schemes + 6 font pairs
 │   ├── template-functions.php # Data getters & render helpers
 │   ├── customizer.php         # WordPress Customizer panels
-│   └── admin-settings.php     # Tabbed admin settings page
+│   ├── admin-settings.php     # Tabbed admin settings page
+│   └── backup-restore.php     # Export/import backup feature
 └── assets/
     ├── css/
     │   ├── resume.css         # Front-end styles
@@ -139,6 +141,11 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 ---
 
 ## Changelog
+
+### 1.0.4
+- Added Backup & Restore tab — export all resume content and Customizer settings to a signed .json file; restore on any WordPress installation
+- SHA-256 integrity hash in every backup file to detect corruption before restoring
+- Step-by-step migration guide built into the tab
 
 ### 1.0.3
 - Renamed Debug tab to System Info
