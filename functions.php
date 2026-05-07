@@ -3,12 +3,12 @@
  * KWL Resume — functions.php
  *
  * @package kwl-resume
- * @version 1.1.0
+ * @version 1.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'KWL_RESUME_VERSION', '1.1.0' );
+define( 'KWL_RESUME_VERSION', '1.1.1' );
 define( 'KWL_RESUME_DIR',     get_template_directory() );
 define( 'KWL_RESUME_URI',     get_template_directory_uri() );
 
@@ -18,6 +18,43 @@ require_once KWL_RESUME_DIR . '/inc/template-functions.php';
 require_once KWL_RESUME_DIR . '/inc/customizer.php';
 require_once KWL_RESUME_DIR . '/inc/admin-settings.php';
 require_once KWL_RESUME_DIR . '/inc/backup-restore.php';
+
+/* ── One-time slashes cleanup (fixes data corrupted before v1.1.1) ── */
+add_action( 'init', 'kwl_resume_maybe_strip_slashes' );
+function kwl_resume_maybe_strip_slashes() {
+    if ( get_option( 'kwl_resume_slashes_cleaned' ) === KWL_RESUME_VERSION ) return;
+
+    $keys = [
+        'kwl_resume_profile', 'kwl_resume_contact', 'kwl_resume_experience',
+        'kwl_resume_skills',  'kwl_resume_education', 'kwl_resume_certifications',
+        'kwl_resume_projects', 'kwl_resume_custom_sections',
+    ];
+
+    foreach ( $keys as $key ) {
+        $value = get_option( $key );
+        if ( $value !== false ) {
+            update_option( $key, kwl_resume_deep_stripslashes( $value ) );
+        }
+    }
+
+    update_option( 'kwl_resume_slashes_cleaned', KWL_RESUME_VERSION );
+}
+
+function kwl_resume_deep_stripslashes( $value ) {
+    if ( is_array( $value ) ) {
+        return array_map( 'kwl_resume_deep_stripslashes', $value );
+    }
+    if ( is_string( $value ) ) {
+        // Repeatedly strip until stable — removes all accumulated layers
+        $prev = null;
+        while ( $prev !== $value ) {
+            $prev  = $value;
+            $value = stripslashes( $value );
+        }
+        return $value;
+    }
+    return $value;
+}
 
 /* ── Theme Setup ── */
 function kwl_resume_setup() {

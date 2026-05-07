@@ -142,6 +142,10 @@ The theme ships pre-populated with Ken Weill's original resume data. Simply go t
 
 ## Changelog
 
+### 1.1.1
+- Fixed backslashes multiplying in text on every save — apostrophes in bullet points were being double-escaped each time, producing `'` then `\\'` etc.
+- Automatically cleans up already-corrupted data on first load after updating
+
 ### 1.1.0
 - Added Backup & Restore tab — export all resume content and appearance settings to a .json file; restore on any WordPress installation
 - Export always produces a complete snapshot, including sections still on defaults

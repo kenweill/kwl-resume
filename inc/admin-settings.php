@@ -26,6 +26,11 @@ function kwl_resume_save_settings() {
     if ( ! check_admin_referer( 'kwl_resume_admin', 'kwl_resume_nonce' ) ) return;
     if ( ! current_user_can( 'edit_theme_options' ) ) return;
 
+    // WordPress adds slashes to all $_POST data. Strip them before sanitizing
+    // to prevent backslashes multiplying on every save (e.g. apostrophes in
+    // bullet points becoming ' then \' then \\'  etc.).
+    $_POST = wp_unslash( $_POST );
+
     $tab = isset( $_POST['kwl_tab'] ) ? sanitize_key( $_POST['kwl_tab'] ) : 'profile';
 
     switch ( $tab ) {

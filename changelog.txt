@@ -4,6 +4,26 @@ https://github.com/kenweill/kwl-resume
 ================================================================
 
 ----------------------------------------------------------------
+Version 1.1.1 — 2026-05-08
+----------------------------------------------------------------
+BUG FIXES
+* Fixed backslashes multiplying in text on every save — apostrophes
+  in bullet points (e.g. annotators' outputs, Carter's) were being
+  double-escaped each time the form was saved, producing \' then
+  \\\' and so on. Fixed by running wp_unslash() on $_POST data
+  before sanitizing, as required for all WordPress form handlers.
+* Automatically cleans up already-corrupted data on first load
+  after updating — strips all accumulated backslash layers from
+  existing saved content so no manual re-entry is needed.
+
+FILES CHANGED
+* functions.php
+* inc/admin-settings.php
+* style.css
+* changelog.txt
+* README.md
+
+----------------------------------------------------------------
 Version 1.1.0 — 2026-05-04
 ----------------------------------------------------------------
 NEW FEATURES
