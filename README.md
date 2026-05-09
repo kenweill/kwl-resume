@@ -168,11 +168,4 @@ See [CHANGELOG.md](CHANGELOG.md) for full version history.
 
 ---
 
-## 👤 Author
-
-**Ken Weill**
-- GitHub: [@kenweill](https://github.com/kenweill)
-
----
-
 > Built with ❤️ as a free, fully featured resume theme. No page builders, no premium add-ons — just a clean, customizable CV that looks great and prints even better.
