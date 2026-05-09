@@ -175,12 +175,4 @@ See [CHANGELOG.md](CHANGELOG.md) for full version history.
 
 ---
 
-## 🔗 Related Projects
-
-- [kwl-coupon-wp](https://github.com/kenweill/kwl-coupon-wp) — WordPress theme for coupon/deals sites
-- [kwl-maintenance-mode](https://github.com/kenweill/kwl-maintenance-mode) — Customizable maintenance mode plugin
-- [mikhmon-ce](https://github.com/kenweill/mikhmon-ce) — MikroTik hotspot manager for PHP 8.x
-
----
-
 > Built with ❤️ as a free, fully featured resume theme. No page builders, no premium add-ons — just a clean, customizable CV that looks great and prints even better.
