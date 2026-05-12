@@ -89,7 +89,7 @@ function kwl_resume_save_settings() {
                     ];
                 }
             }
-            update_option( 'kwl_resume_experience', $exp );
+            update_option( 'kwl_resume_experience', kwl_resume_sort_experience( $exp ) );
             break;
 
         case 'skills':
@@ -405,11 +405,10 @@ function kwl_resume_tab_experience() {
     ?>
     <div class="kwl-section-card">
         <h2><?php esc_html_e( 'Work Experience', 'kwl-resume' ); ?></h2>
-        <p class="description" style="margin-bottom:16px"><?php esc_html_e( 'Drag to reorder. Each bullet point goes on its own line.', 'kwl-resume' ); ?></p>
-        <div id="kwl-exp-list" class="kwl-repeater-list kwl-sortable">
+        <p class="description" style="margin-bottom:16px"><?php esc_html_e( 'Entries are sorted automatically by date — active jobs first, then newest to oldest. Each bullet point goes on its own line.', 'kwl-resume' ); ?></p>
+        <div id="kwl-exp-list" class="kwl-repeater-list">
             <?php foreach ( $items as $i => $item ) : ?>
             <div class="kwl-repeater-item kwl-exp-item">
-                <div class="kwl-repeater-handle">☰</div>
                 <div class="kwl-repeater-body">
                     <div class="kwl-field-row kwl-field-row--inline">
                         <div>
@@ -440,7 +439,6 @@ function kwl_resume_tab_experience() {
 
         <script type="text/html" id="kwl-tpl-exp">
         <div class="kwl-repeater-item kwl-exp-item">
-            <div class="kwl-repeater-handle">☰</div>
             <div class="kwl-repeater-body">
                 <div class="kwl-field-row kwl-field-row--inline">
                     <div>

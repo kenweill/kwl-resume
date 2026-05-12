@@ -4,6 +4,20 @@ All notable changes to this project are documented here.
 
 ---
 
+## [1.1.2] — 2026-05-13
+
+### 🚀 New
+- Experience entries are now sorted automatically on every save — no manual reordering needed.
+  - Active jobs (date contains "Present") always appear first, sorted by start date newest first
+  - Ended jobs follow, sorted by end date newest to oldest, then start date as a tiebreaker
+  - Supports en-dash (`–`), em-dash (`—`), and hyphen as date separators
+- Drag-to-reorder handle removed from the Experience tab since ordering is now automatic
+
+### 📁 Files Changed
+`inc/template-functions.php` `inc/admin-settings.php` `functions.php` `style.css` `CHANGELOG.md` `README.md`
+
+---
+
 ## [1.1.1] — 2026-05-08
 
 ### 🔧 Fixed

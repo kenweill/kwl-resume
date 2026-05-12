@@ -129,6 +129,52 @@ function kwl_resume_get_experience() {
     return ( $saved !== null ) ? $saved : $defaults;
 }
 
+/**
+ * Parse a date string like "Nov 2025", "Apr 2026", "2004" into a comparable
+ * integer. Returns PHP_INT_MAX for "Present" so active jobs sort first.
+ */
+function kwl_resume_parse_date( $str ) {
+    $str = trim( $str );
+    if ( empty( $str ) ) return 0;
+
+    $months = [
+        'jan'=>1,'feb'=>2,'mar'=>3,'apr'=>4,'may'=>5,'jun'=>6,
+        'jul'=>7,'aug'=>8,'sep'=>9,'oct'=>10,'nov'=>11,'dec'=>12,
+    ];
+
+    if ( preg_match( '/present|now/i', $str ) ) return PHP_INT_MAX;
+
+    if ( preg_match( '/([a-z]{3})\s+(\d{4})/i', $str, $m ) ) {
+        $mon = $months[ strtolower( $m[1] ) ] ?? 1;
+        return (int) $m[2] * 100 + $mon;
+    }
+
+    if ( preg_match( '/^\d{4}$/', $str ) ) return (int) $str * 100;
+
+    return 0;
+}
+
+/**
+ * Sort experience entries: active jobs first (newest start date first among
+ * those), then ended jobs newest end date first, then newest start date first.
+ */
+function kwl_resume_sort_experience( array $items ) {
+    usort( $items, function( $a, $b ) {
+        $parts_a = preg_split( '/\s*[–—-]\s*/', $a['date'] ?? '', 2 );
+        $parts_b = preg_split( '/\s*[–—-]\s*/', $b['date'] ?? '', 2 );
+
+        $start_a = kwl_resume_parse_date( $parts_a[0] ?? '' );
+        $end_a   = kwl_resume_parse_date( $parts_a[1] ?? $parts_a[0] ?? '' );
+        $start_b = kwl_resume_parse_date( $parts_b[0] ?? '' );
+        $end_b   = kwl_resume_parse_date( $parts_b[1] ?? $parts_b[0] ?? '' );
+
+        if ( $end_b !== $end_a ) return $end_b <=> $end_a;
+        return $start_b <=> $start_a;
+    } );
+
+    return $items;
+}
+
 function kwl_resume_get_skills() {
     $defaults = [
         'Affiliate Marketing', 'Program Management', 'Lead Generation',

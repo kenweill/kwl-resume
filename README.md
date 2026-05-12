@@ -16,7 +16,7 @@
 - 📐 **Sidebar position** — left or right, with adjustable width
 - 👁️ **Section visibility toggles** — show or hide any section without losing data
 - 🛠️ **Custom admin settings page** — tabbed interface for all resume content
-- 🔀 **Sortable/reorderable entries** — drag-and-drop experience and certifications
+- 🔀 **Auto-sorted experience** — entries sort automatically by date on save (active jobs first, newest to oldest); drag-and-drop reordering for Education, Certifications, and Projects
 - ➕ **Custom Sections** — add any section not covered by defaults (Awards, Languages, Publications, etc.)
 - 💼 **Projects section** — generic, not limited to open source; each project has a Type field
 - 🖨️ **Print / Save as PDF** button — fixed floating button, togglable
