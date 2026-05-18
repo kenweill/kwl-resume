@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -337,7 +338,7 @@
   <h1>KWL <span>Resume</span></h1>
   <p>A fully customizable single-page resume/CV WordPress theme with 8 color schemes, live Customizer preview, and a full admin content editor.</p>
   <div class="header-meta">
-    <span>Version 1.0.0</span>
+    <span id="kwl-version">Version 1.0.0</span>
     <span>·</span>
     <a href="https://github.com/kenweill/kwl-resume" target="_blank">github.com/kenweill/kwl-resume</a>
     <span>·</span>
@@ -780,5 +781,18 @@ git push origin main --tags</pre>
   <p>KWL Resume Theme — <a href="https://github.com/kenweill/kwl-resume">github.com/kenweill/kwl-resume</a> — by <a href="https://github.com/kenweill">Ken Weill</a> — GPL-2.0+</p>
 </footer>
 
+<script>
+  fetch('https://api.github.com/repos/kenweill/kwl-resume/releases/latest')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.tag_name) {
+        var el = document.getElementById('kwl-version');
+        if (el) el.textContent = 'Version ' + data.tag_name.replace(/^v/, '');
+      }
+    })
+    .catch(function() {
+      // silently fail — hardcoded version remains as fallback
+    });
+</script>
 </body>
 </html>
