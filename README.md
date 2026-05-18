@@ -5,6 +5,7 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue?logo=wordpress)
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-purple?logo=php)
 ![License](https://img.shields.io/badge/License-GPL--2.0%2B-green)
+[![Documentation](https://img.shields.io/badge/docs-online-0D9488)](https://kenweill.github.io/kwl-resume/)
 
 ---
 
@@ -118,7 +119,8 @@ kwl-resume/
 ├── screenshot.png             # Theme browser preview (1200×900)
 ├── README.md                  # This file
 ├── CHANGELOG.md               # Version history
-├── documentation.html         # Full usage documentation
+├── docs/
+│   └── index.html             # Full usage documentation (GitHub Pages)
 ├── .gitignore
 ├── inc/
 │   ├── color-schemes.php      # 8 color schemes + 6 font pairs
@@ -165,6 +167,12 @@ Anyone can use, modify, and distribute this theme freely — as long as they kee
 ## 📋 Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for full version history.
+
+---
+
+## 📖 Documentation
+
+Full usage documentation is available at **[kenweill.github.io/kwl-resume](https://kenweill.github.io/kwl-resume/)**.
 
 ---
 
