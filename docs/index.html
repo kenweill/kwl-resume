@@ -446,7 +446,7 @@ git clone https://github.com/kenweill/kwl-resume.git</pre>
         </div>
         <div class="tab-card">
           <strong>💼 Experience</strong>
-          <p>Job entries with role, company, date range, and bullet points. Drag the ☰ handle to reorder entries.</p>
+          <p>Job entries with role, company, date range, and bullet points. Entries are sorted automatically by date on save — active jobs first, then newest to oldest.</p>
         </div>
         <div class="tab-card">
           <strong>🛠 Skills</strong>
@@ -478,7 +478,7 @@ git clone https://github.com/kenweill/kwl-resume.git</pre>
         </div>
         <div class="tab-card">
           <strong>💾 Backup &amp; Restore</strong>
-          <p>Export all resume content and Customizer settings to a signed .json file. Restore from any previously exported backup — works across domains and WordPress installs. Includes a step-by-step migration guide.</p>
+          <p>Export all resume content and Customizer settings to a .json file. Restore from any previously exported backup — works across domains and WordPress installs. Includes a step-by-step migration guide.</p>
         </div>
       </div>
 
@@ -700,7 +700,7 @@ git push -u origin main</pre>
       <ol class="steps">
         <li><span class="step-num">1</span>On GitHub go to your repository → <strong>Releases → Draft a new release</strong>.</li>
         <li><span class="step-num">2</span>Set the tag to <code>v1.0.0</code> and the title to <code>KWL Resume v1.0.0</code>.</li>
-        <li><span class="step-num">3</span>Copy the relevant section from <code>changelog.txt</code> into the release notes.</li>
+        <li><span class="step-num">3</span>Copy the relevant section from <code>CHANGELOG.md</code> into the release notes.</li>
         <li><span class="step-num">4</span>Attach your versioned zip file (e.g. <code>KWL.Resume.v1.1.0.zip</code>) as a release asset.</li>
         <li><span class="step-num">5</span>Click <strong>Publish release</strong>.</li>
       </ol>
@@ -713,7 +713,7 @@ git push origin main --tags</pre>
 
       <div class="callout callout-tip">
         <span class="callout-icon">💡</span>
-        <p>Update the <code>Version</code> field in <code>style.css</code>, the <code>KWL_RESUME_VERSION</code> constant in <code>functions.php</code>, and add a new entry to <code>changelog.txt</code> with each release.</p>
+        <p>Update the <code>Version</code> field in <code>style.css</code>, the <code>KWL_RESUME_VERSION</code> constant in <code>functions.php</code>, and add a new entry to <code>CHANGELOG.md</code> with each release.</p>
       </div>
     </section>
 
@@ -728,9 +728,12 @@ git push origin main --tags</pre>
 ├── <span class="file">front-page.php</span>         <span class="comment">← Main resume output template</span>
 ├── <span class="file">screenshot.png</span>         <span class="comment">← Theme browser preview (1200×900)</span>
 ├── <span class="file">README.md</span>              <span class="comment">← GitHub readme</span>
-├── <span class="file">changelog.txt</span>          <span class="comment">← Version history</span>
-├── <span class="file">documentation.html</span>     <span class="comment">← This file</span>
+├── <span class="file">CHANGELOG.md</span>           <span class="comment">← Version history</span>
+├── <span class="file">LICENSE</span>                <span class="comment">← GPL-2.0+ license</span>
 ├── <span class="file">.gitignore</span>
+│
+├── <span class="dir">docs/</span>
+│   └── <span class="file">index.html</span>         <span class="comment">← GitHub Pages documentation (this file)</span>
 │
 ├── <span class="dir">inc/</span>
 │   ├── <span class="file">color-schemes.php</span>  <span class="comment">← 8 color schemes + 6 font pairs</span>
